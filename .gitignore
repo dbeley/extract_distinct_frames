@@ -1,0 +1,7 @@
+*.mp4
+*.jpg
+*.egg-info/
+build/
+dist/
+temp/
+venv/
