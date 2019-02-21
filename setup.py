@@ -21,7 +21,7 @@ setuptools.setup(
             },
         classifiers=[
             "Programming Language :: Python :: 3",
-            "Operating System :: POSIC :: Linux"
+            "Operating System :: POSIX :: Linux"
             ],
         install_requires=[
             'tqdm',

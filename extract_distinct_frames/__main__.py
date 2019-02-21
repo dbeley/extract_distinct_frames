@@ -60,7 +60,6 @@ def parse_args():
     parser.add_argument('-f', '--file', help="Video file", type=str)
     parser.add_argument('-u', '--url', help="URL of the video", type=str)
     args = parser.parse_args()
-
     logging.basicConfig(level=args.loglevel)
     return args
 
