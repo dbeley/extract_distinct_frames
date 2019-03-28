@@ -17,5 +17,5 @@ def compare_images(image1, image2):
         dif = sum(abs(c1-c2) for p1, p2 in pairs for c1, c2 in zip(p1, p2))
     ncomponents = i1.size[0] * i1.size[1] * 3
     percentage = (dif / 255.0 * 100) / ncomponents
-    logger.debug(f"Difference (percentage):, {percentage}")
+    logger.debug(f"Difference {image1} vs {image2} (percentage):, {percentage}")
     return(percentage)

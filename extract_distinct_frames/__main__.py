@@ -43,7 +43,7 @@ def main():
     for file in tqdm(sorted(pathlist), dynamic_ncols=True, total=pathlist_size):
         if not first:
             score = compare_images(old, file)
-            if score < 5:
+            if score < 2:
                 Path.unlink(file)
             else:
                 old = file
