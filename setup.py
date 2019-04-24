@@ -26,5 +26,8 @@ setuptools.setup(
         install_requires=[
             'tqdm',
             'Pillow',
+            'img2pdf',
+            'youtube_dl',
+            'ffmpeg'
             ]
         )

@@ -28,9 +28,9 @@ def main():
             logger.info(f"Downloading {url}")
             videofile = downloading_video(url)
             logger.info(f"Finished downloading {videofile}")
+        videoname = os.path.splitext(videofile)[0]
     else:
-        videofile = file
-    videoname = os.path.splitext(videofile)[0]
+        videoname = Path(file)
     videofile = glob.glob(f"{videoname}*")[0]
 
     directory = f"{videoname}_images"

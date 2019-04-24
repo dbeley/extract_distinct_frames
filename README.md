@@ -1,6 +1,6 @@
 # extract_distinct_frames
 
-This package allows extracting distinct frames/images from a video file or a youtube url (with the help of youtube-dl).
+This script allows the extrcation of the distinct frames/images from a video file or a youtube url (with the help of youtube-dl).
 
 The script creates a folder and a pdf file, both containing all the distinct images found.
 
@@ -19,6 +19,12 @@ python setup.py install
 ```
 
 ## Usage
+
+```
+extract_distinct_frames -u URL
+```
+
+## Help
 
 ```
 extract_distinct_frames -h

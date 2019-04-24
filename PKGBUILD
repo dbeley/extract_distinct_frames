@@ -12,6 +12,9 @@ depends=(
         'python-setuptools'
         'python-tqdm'
         'python-pillow'
+        'img2pdf'
+        'youtube-dl'
+        'ffmpeg'
         )
 source=("git+https://github.com/dbeley/${pkgname%-git}")
 md5sums=("SKIP")
