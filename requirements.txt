@@ -1,6 +1,0 @@
-extract-distinct-frames==0.0.1
-ffmpeg==1.4
-img2pdf==0.3.3
-Pillow==6.0.0
-tqdm==4.31.1
-youtube-dl==2019.4.24
