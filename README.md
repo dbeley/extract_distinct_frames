@@ -15,17 +15,17 @@ The script creates a folder and a pdf file, both containing all the distinct ima
 ## Installation
 
 ```
-python setup.py install
+pipenv install '-e .'
 ```
 
 ## Usage
 
 ```
-extract_distinct_frames -u URL
+pipenv run extract_distinct_frames -u URL
 ```
 
 ## Help
 
 ```
-extract_distinct_frames -h
+pipenv run extract_distinct_frames -h
 ```
