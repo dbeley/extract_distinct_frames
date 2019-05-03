@@ -2,7 +2,6 @@ import argparse
 import logging
 import time
 import os
-import errno
 import glob
 import img2pdf
 from pathlib import Path
@@ -34,11 +33,7 @@ def main():
     videofile = glob.glob(f"{videoname}*")[0]
 
     directory = f"{videoname}_images"
-    try:
-        os.makedirs(directory)
-    except OSError as e:
-        if e.errno != errno.EEXIST:
-            raise
+    Path(directory).mkdir(parents=True, exist_ok=True)
 
     logger.debug(f"Extracting images to {directory}")
     extracting_images(videofile, directory)
