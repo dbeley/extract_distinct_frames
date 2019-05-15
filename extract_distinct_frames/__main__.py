@@ -2,7 +2,6 @@ import argparse
 import logging
 import time
 import os
-import glob
 import img2pdf
 from pathlib import Path
 from tqdm import tqdm
@@ -30,7 +29,7 @@ def main():
         videoname = os.path.splitext(videofile)[0]
     else:
         videoname = Path(file)
-    videofile = glob.glob(f"{videoname}*")[0]
+    videofile = list(Path.cwd().glob(f"{videoname}*"))[0]
 
     directory = f"{videoname}_images"
     Path(directory).mkdir(parents=True, exist_ok=True)
@@ -45,15 +44,16 @@ def main():
     first = True
     logger.info("Comparing images")
     for file in tqdm(sorted(pathlist), dynamic_ncols=True, total=pathlist_size):
-        if not first:
+        if first:
+            old = file
+            first = False
+        else:
             score = compare_images(old, file)
+            # Threshold = 2
             if score < 2:
                 Path.unlink(file)
             else:
                 old = file
-        if first:
-            old = file
-            first = False
 
     logger.info(f"Suppressing {videofile}")
     os.remove(videofile)

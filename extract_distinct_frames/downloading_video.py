@@ -1,5 +1,3 @@
-import os
-import re
 import logging
 from youtube_dl import YoutubeDL
 
@@ -26,5 +24,4 @@ def downloading_video(url):
         logger.debug(f"Téléchargement video {url}")
         info_dict = ydl.extract_info(url, download=True)
         filename = ydl.prepare_filename(info_dict)
-        #video_title = info_dict.get('title', None)
     return filename
