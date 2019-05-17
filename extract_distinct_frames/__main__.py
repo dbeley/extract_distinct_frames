@@ -15,26 +15,24 @@ temps_debut = time.time()
 
 def main():
     args = parse_args()
-    file = args.file
-    url = args.url
     # Downloading video
-    if file is None:
-        if url is None:
+    if args.file is None:
+        if args.url is None:
             logger.error("No video file or url entered. Use the -h argument to see available options")
             exit()
-        if url is not None:
-            logger.info(f"Downloading {url}")
-            videofile = downloading_video(url)
-            logger.info(f"Finished downloading {videofile}")
+        if args.url is not None:
+            logger.info("Downloading %s", args.url)
+            videofile = downloading_video(args.url)
+            logger.info("Finished downloading %s", videofile)
         videoname = os.path.splitext(videofile)[0]
     else:
-        videoname = Path(file)
+        videoname = Path(args.file)
     videofile = list(Path.cwd().glob(f"{videoname}*"))[0]
 
     directory = f"{videoname}_images"
     Path(directory).mkdir(parents=True, exist_ok=True)
 
-    logger.debug(f"Extracting images to {directory}")
+    logger.debug("Extracting images to %s", directory)
     extracting_images(videofile, directory)
 
     # Compare images
@@ -55,7 +53,7 @@ def main():
             else:
                 old = file
 
-    logger.info(f"Suppressing {videofile}")
+    logger.info("Suppressing %s", videofile)
     os.remove(videofile)
 
     # Create pdf file with remaining images

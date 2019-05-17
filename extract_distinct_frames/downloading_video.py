@@ -21,7 +21,7 @@ def downloading_video(url):
             'logger': MyLogger(),
     }
     with YoutubeDL(ydl_opts) as ydl:
-        logger.debug(f"Téléchargement video {url}")
+        logger.debug("Downloading video at %s", url) 
         info_dict = ydl.extract_info(url, download=True)
         filename = ydl.prepare_filename(info_dict)
     return filename

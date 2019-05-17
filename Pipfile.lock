@@ -65,17 +65,17 @@
         },
         "tqdm": {
             "hashes": [
-                "sha256:d385c95361699e5cf7622485d9b9eae2d4864b21cd5a2374a9c381ffed701021",
-                "sha256:e22977e3ebe961f72362f6ddfb9197cc531c9737aaf5f607ef09740c849ecd05"
+                "sha256:0a860bf2683fdbb4812fe539a6c22ea3f1777843ea985cb8c3807db448a0f7ab",
+                "sha256:e288416eecd4df19d12407d0c913cbf77aa8009d7fddb18f632aded3bdbdda6b"
             ],
-            "version": "==4.31.1"
+            "version": "==4.32.1"
         },
         "youtube-dl": {
             "hashes": [
-                "sha256:31844229a4f4d7003e03ab309ff2caff1b16ce0acbd3cfb7a13276058af13056",
-                "sha256:a751bd293e2d7ee963910de14b3eb95b88837021899be488fade0b8abe815650"
+                "sha256:4b34f9da88a5ba1e4fb3cbf296b13252bc61e3f14ce25bcd8dc90a8bfa55dadd",
+                "sha256:fe71aa725dc0f86deacdcc91f38492317d53b0ca8ec0f8bddc9961c205b4fea4"
             ],
-            "version": "==2019.4.30"
+            "version": "==2019.5.11"
         }
     },
     "develop": {}
