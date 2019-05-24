@@ -8,11 +8,11 @@ The script creates a folder and a pdf file, both containing all the distinct ima
 
 - img2pdf
 - tqdm
-- PIL
+- pillow
 - youtube-dl
 - ffmpeg
 
-## Installation
+## Installation in a virtualenv
 
 ```
 pipenv install '-e .'
@@ -21,11 +21,23 @@ pipenv install '-e .'
 ## Usage
 
 ```
-pipenv run extract_distinct_frames -u URL
+extract_distinct_frames -u URL
 ```
 
 ## Help
 
 ```
-pipenv run extract_distinct_frames -h
+extract_distinct_frames -h
+```
+
+```
+usage: extract_distinct_frames [-h] [--debug] [-f FILE] [-u URL]
+
+Extract unique images from videos
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --debug               Display debugging information
+  -f FILE, --file FILE  Video file
+  -u URL, --url URL     URL of the video
 ```

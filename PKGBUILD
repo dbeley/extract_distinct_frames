@@ -1,5 +1,5 @@
 pkgname=extract_distinct_frames-git
-pkgver=0.0.1
+pkgver=1.0
 pkgrel=1
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")

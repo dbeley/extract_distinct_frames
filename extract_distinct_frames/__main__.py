@@ -18,7 +18,9 @@ def main():
     # Downloading video
     if args.file is None:
         if args.url is None:
-            logger.error("No video file or url entered. Use the -h argument to see available options")
+            logger.error(
+                "No video file or url entered. Use the -h argument to see available options"
+            )
             exit()
         if args.url is not None:
             logger.info("Downloading %s", args.url)
@@ -36,12 +38,14 @@ def main():
     extracting_images(videofile, directory)
 
     # Compare images
-    pathlist = Path(directory).glob('**/*.jpg')
+    pathlist = Path(directory).glob("**/*.jpg")
     pathlist_size = sum(1 for x in pathlist)
-    pathlist = Path(directory).glob('**/*.jpg')
+    pathlist = Path(directory).glob("**/*.jpg")
     first = True
     logger.info("Comparing images")
-    for file in tqdm(sorted(pathlist), dynamic_ncols=True, total=pathlist_size):
+    for file in tqdm(
+        sorted(pathlist), dynamic_ncols=True, total=pathlist_size
+    ):
         if first:
             old = file
             first = False
@@ -58,7 +62,7 @@ def main():
 
     # Create pdf file with remaining images
     images = []
-    pathlist = Path(directory).glob('**/*.jpg')
+    pathlist = Path(directory).glob("**/*.jpg")
     for file in sorted(pathlist):
         images.append(str(file))
 
@@ -70,14 +74,23 @@ def main():
 
 
 def parse_args():
-    parser = argparse.ArgumentParser(description='Extract unique images from videos')
-    parser.add_argument('--debug', help="Display debugging information", action="store_const", dest="loglevel", const=logging.DEBUG, default=logging.INFO)
-    parser.add_argument('-f', '--file', help="Video file", type=str)
-    parser.add_argument('-u', '--url', help="URL of the video", type=str)
+    parser = argparse.ArgumentParser(
+        description="Extract unique images from videos"
+    )
+    parser.add_argument(
+        "--debug",
+        help="Display debugging information",
+        action="store_const",
+        dest="loglevel",
+        const=logging.DEBUG,
+        default=logging.INFO,
+    )
+    parser.add_argument("-f", "--file", help="Video file", type=str)
+    parser.add_argument("-u", "--url", help="URL of the video", type=str)
     args = parser.parse_args()
     logging.basicConfig(level=args.loglevel)
     return args
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

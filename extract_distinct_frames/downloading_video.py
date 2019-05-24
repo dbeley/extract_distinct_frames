@@ -17,11 +17,11 @@ class MyLogger(object):
 
 def downloading_video(url):
     ydl_opts = {
-            # 'quiet': True,
-            'logger': MyLogger(),
+        # 'quiet': True,
+        "logger": MyLogger()
     }
     with YoutubeDL(ydl_opts) as ydl:
-        logger.debug("Downloading video at %s", url) 
+        logger.debug("Downloading video at %s", url)
         info_dict = ydl.extract_info(url, download=True)
         filename = ydl.prepare_filename(info_dict)
     return filename
