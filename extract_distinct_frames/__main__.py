@@ -30,7 +30,6 @@ def main():
     else:
         video_file = Path(args.file)
     filename = Path(video_file).stem
-    breakpoint()
 
     export_directory = f"{filename}_images"
     Path(export_directory).mkdir(parents=True, exist_ok=True)
