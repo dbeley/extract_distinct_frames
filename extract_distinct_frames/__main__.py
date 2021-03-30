@@ -63,7 +63,7 @@ def main():
     images = [str(x) for x in sorted(pathlist)]
 
     logger.info("Creating pdf file")
-    with open(f"{videoname}.pdf", "wb") as f:
+    with open(f"{filename}.pdf", "wb") as f:
         f.write(img2pdf.convert(images))
 
     print("Runtime : %.2f seconds" % (time.time() - temps_debut))
