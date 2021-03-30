@@ -24,23 +24,23 @@ def main():
             exit()
         else:
             logger.info("Downloading %s", args.url)
-            videofile = downloading_video(args.url)
-            logger.info("Finished downloading %s", videofile)
-        filename = os.path.splitext(videofile)[0]
+            video_filename = downloading_video(args.url)
+            logger.info("Finished downloading %s", video_filename)
+        video_file = Path(video_filename)
     else:
-        filename = Path(args.file)
-    videofile = list(Path.cwd().glob(f"{filename}*"))[0]
+        video_file = Path(args.file)
+    filename = Path(video_file).stem
+    breakpoint()
 
-    directory = f"{filename}_images"
-    Path(directory).mkdir(parents=True, exist_ok=True)
+    export_directory = f"{filename}_images"
+    Path(export_directory).mkdir(parents=True, exist_ok=True)
 
-    logger.debug("Extracting images to %s", directory)
-    extracting_images(videofile, directory)
+    logger.debug("Extracting images to %s", export_directory)
+    extracting_images(video_file, export_directory)
 
     # Compare images
-    pathlist = Path(directory).glob("**/*.jpg")
-    pathlist_size = sum(1 for x in pathlist)
-    pathlist = Path(directory).glob("**/*.jpg")
+    pathlist_size = sum(1 for x in Path(export_directory).glob("**/*.jpg"))
+    pathlist = Path(export_directory).glob("**/*.jpg")
     first = True
     logger.info("Comparing images")
     for file in tqdm(sorted(pathlist), dynamic_ncols=True, total=pathlist_size):
@@ -55,11 +55,11 @@ def main():
             else:
                 old = file
 
-    logger.info("Suppressing %s", videofile)
-    os.remove(videofile)
+    logger.info("Suppressing %s", video_file)
+    os.remove(video_file)
 
     # Create pdf file with remaining images
-    pathlist = Path(directory).glob("**/*.jpg")
+    pathlist = Path(export_directory).glob("**/*.jpg")
     images = [str(x) for x in sorted(pathlist)]
 
     logger.info("Creating pdf file")
