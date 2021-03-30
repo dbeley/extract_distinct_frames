@@ -1,12 +1,12 @@
 [[source]]
-name = "pypi"
 url = "https://pypi.org/simple"
 verify_ssl = true
+name = "pypi"
+
+[packages]
+extract-distinct-frames = {editable = true, path = "."}
 
 [dev-packages]
 
-[packages]
-extract-distinct-frames = {editable = true,path = "."}
-
 [requires]
-python_version = "3.7"
+python_version = "3.9"

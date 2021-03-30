@@ -16,22 +16,22 @@ temps_debut = time.time()
 def main():
     args = parse_args()
     # Downloading video
-    if args.file is None:
-        if args.url is None:
+    if not args.file:
+        if not args.url:
             logger.error(
                 "No video file or url entered. Use the -h argument to see available options"
             )
             exit()
-        if args.url is not None:
+        else:
             logger.info("Downloading %s", args.url)
             videofile = downloading_video(args.url)
             logger.info("Finished downloading %s", videofile)
-        videoname = os.path.splitext(videofile)[0]
+        filename = os.path.splitext(videofile)[0]
     else:
-        videoname = Path(args.file)
-    videofile = list(Path.cwd().glob(f"{videoname}*"))[0]
+        filename = Path(args.file)
+    videofile = list(Path.cwd().glob(f"{filename}*"))[0]
 
-    directory = f"{videoname}_images"
+    directory = f"{filename}_images"
     Path(directory).mkdir(parents=True, exist_ok=True)
 
     logger.debug("Extracting images to %s", directory)
@@ -43,9 +43,7 @@ def main():
     pathlist = Path(directory).glob("**/*.jpg")
     first = True
     logger.info("Comparing images")
-    for file in tqdm(
-        sorted(pathlist), dynamic_ncols=True, total=pathlist_size
-    ):
+    for file in tqdm(sorted(pathlist), dynamic_ncols=True, total=pathlist_size):
         if first:
             old = file
             first = False
@@ -61,10 +59,8 @@ def main():
     os.remove(videofile)
 
     # Create pdf file with remaining images
-    images = []
     pathlist = Path(directory).glob("**/*.jpg")
-    for file in sorted(pathlist):
-        images.append(str(file))
+    images = [str(x) for x in sorted(pathlist)]
 
     logger.info("Creating pdf file")
     with open(f"{videoname}.pdf", "wb") as f:
@@ -74,9 +70,7 @@ def main():
 
 
 def parse_args():
-    parser = argparse.ArgumentParser(
-        description="Extract unique images from videos"
-    )
+    parser = argparse.ArgumentParser(description="Extract unique images from videos")
     parser.add_argument(
         "--debug",
         help="Display debugging information",
