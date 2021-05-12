@@ -4,7 +4,7 @@ from PIL import Image
 logger = logging.getLogger(__name__)
 
 
-def compare_images(image1, image2):
+def compare_image(image1, image2):
     i1 = Image.open(image1)
     i2 = Image.open(image2)
     assert i1.mode == i2.mode, "Different kinds of images."

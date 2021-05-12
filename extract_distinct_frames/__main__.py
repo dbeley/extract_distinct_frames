@@ -5,9 +5,9 @@ import os
 import img2pdf
 from pathlib import Path
 from tqdm import tqdm
-from .compare_images import compare_images
-from .downloading_video import downloading_video
-from .extracting_images import extracting_images
+from .compare_image import compare_image
+from .download_video import download_video
+from .extract_image import extract_image
 
 logger = logging.getLogger()
 temps_debut = time.time()
@@ -24,7 +24,7 @@ def main():
             exit()
         else:
             logger.info("Downloading %s", args.url)
-            video_filename = downloading_video(args.url)
+            video_filename = download_video(args.url)
             logger.info("Finished downloading %s", video_filename)
         video_file = Path(video_filename)
     else:
@@ -35,7 +35,7 @@ def main():
     Path(export_directory).mkdir(parents=True, exist_ok=True)
 
     logger.debug("Extracting images to %s", export_directory)
-    extracting_images(video_file, export_directory)
+    extract_image(video_file, export_directory)
 
     # Compare images
     pathlist_size = sum(1 for x in Path(export_directory).glob("**/*.jpg"))
@@ -47,7 +47,7 @@ def main():
             old = file
             first = False
         else:
-            score = compare_images(old, file)
+            score = compare_image(old, file)
             # Threshold = 2
             if score < 2:
                 Path.unlink(file)

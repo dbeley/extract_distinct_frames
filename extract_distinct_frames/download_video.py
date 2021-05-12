@@ -15,7 +15,7 @@ class MyLogger(object):
         print(msg)
 
 
-def downloading_video(url):
+def download_video(url):
     ydl_opts = {
         # 'quiet': True,
         "logger": MyLogger()
