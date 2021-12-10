@@ -23,5 +23,5 @@ setuptools.setup(
         "Programming Language :: Python :: 3",
         "Operating System :: POSIX :: Linux",
     ],
-    install_requires=["tqdm", "Pillow", "img2pdf", "youtube_dl", "ffmpeg"],
+    install_requires=["tqdm", "Pillow", "img2pdf", "yt-dlp", "ffmpeg"],
 )

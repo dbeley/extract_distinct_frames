@@ -1,6 +1,6 @@
 # extract_distinct_frames
 
-This script allows the extraction of the distinct frames/images from a video file or a youtube url (with the help of youtube-dl).
+This script allows the extraction of the distinct frames/images from a video file or a youtube url (with the help of yt-dlp).
 
 The script creates a folder and a pdf file, both containing all the distinct images found.
 
@@ -9,7 +9,7 @@ The script creates a folder and a pdf file, both containing all the distinct ima
 - img2pdf
 - tqdm
 - pillow
-- youtube-dl
+- yt-dlp
 - ffmpeg
 
 ## Installation in a virtualenv

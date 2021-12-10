@@ -5,6 +5,7 @@ name = "pypi"
 
 [packages]
 extract-distinct-frames = {editable = true, path = "."}
+yt-dlp = "*"
 
 [dev-packages]
 

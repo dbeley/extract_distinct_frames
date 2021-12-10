@@ -10,7 +10,7 @@ from .download_video import download_video
 from .extract_image import extract_image
 
 logger = logging.getLogger()
-temps_debut = time.time()
+START_TIME = time.time()
 
 
 def main():
@@ -66,7 +66,7 @@ def main():
     with open(f"{filename}.pdf", "wb") as f:
         f.write(img2pdf.convert(images))
 
-    logger.info("Runtime : %.2f seconds" % (time.time() - temps_debut))
+    logger.info("Runtime : %.2f seconds" % (time.time() - START_TIME))
 
 
 def parse_args():
