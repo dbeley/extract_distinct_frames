@@ -1,5 +1,5 @@
 import logging
-from youtube_dl import YoutubeDL
+from yt_dlp import YoutubeDL
 
 logger = logging.getLogger(__name__)
 
