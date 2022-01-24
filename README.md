@@ -9,7 +9,7 @@ The script creates a folder and a pdf file, both containing all the distinct ima
 - img2pdf
 - tqdm
 - pillow
-- youtube-dl
+- yt-dlp
 - ffmpeg
 
 ## Installation in a virtualenv
