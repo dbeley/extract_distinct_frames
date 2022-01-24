@@ -13,7 +13,7 @@ depends=(
         'python-tqdm'
         'python-pillow'
         'img2pdf'
-        'youtube-dl'
+        'yt-dlp'
         'ffmpeg'
         )
 source=("git+https://github.com/dbeley/${pkgname%-git}")
