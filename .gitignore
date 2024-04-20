@@ -7,3 +7,6 @@ dist/
 temp/
 tags
 .venv/
+venv/
+*.pdf
+.direnv/
