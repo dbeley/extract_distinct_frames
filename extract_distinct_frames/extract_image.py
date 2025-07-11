@@ -1,11 +1,22 @@
-import os
 import logging
+import subprocess
 
 logger = logging.getLogger(__name__)
 
 
 def extract_image(file, directory):
     logger.info("Extracting images from %s to %s", file, directory)
-    os.system(
-        f'ffmpeg -i "{file}" -vf fps=0.25 "{directory}/thumb%04d.jpg" -hide_banner >/dev/null 2>&1'
+    subprocess.run(
+        [
+            "ffmpeg",
+            "-i",
+            str(file),
+            "-vf",
+            "fps=0.25",
+            f"{directory}/thumb%04d.jpg",
+            "-hide_banner",
+        ],
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL,
+        check=True,
     )
