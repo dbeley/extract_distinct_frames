@@ -10,11 +10,11 @@ from .download_video import download_video
 from .extract_image import extract_image
 
 logger = logging.getLogger()
-START_TIME = time.time()
 
 
 def main():
     args = parse_args()
+    start_time = time.time()
     # Downloading video
     if not args.file:
         if not args.url:
@@ -48,7 +48,7 @@ def main():
             score = compare_image(old, file)
             # Threshold = 2
             if score < 2:
-                Path.unlink(file)
+                file.unlink()
             else:
                 old = file
 
@@ -66,7 +66,7 @@ def main():
     with open(f"{filename}.pdf", "wb") as f:
         f.write(img2pdf.convert(images))
 
-    logger.info("Runtime : %.2f seconds" % (time.time() - START_TIME))
+    logger.info("Runtime : %.2f seconds", time.time() - start_time)
 
 
 def parse_args():
@@ -79,8 +79,9 @@ def parse_args():
         const=logging.DEBUG,
         default=logging.INFO,
     )
-    parser.add_argument("-f", "--file", help="Video file", type=str)
-    parser.add_argument("-u", "--url", help="URL of the video", type=str)
+    group = parser.add_mutually_exclusive_group(required=True)
+    group.add_argument("-f", "--file", help="Video file", type=str)
+    group.add_argument("-u", "--url", help="URL of the video", type=str)
     args = parser.parse_args()
     logging.basicConfig(level=args.loglevel)
     return args
